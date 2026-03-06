@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Safe Driving School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo (1).jpg') }}">
+            <div class="brand">
+                <h2>GO SAFE</h2>
+                <span>Driving School</span>
+            </div>
+        </div>
+
+        
+<nav>
+<ul>
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About</a></li>
+<li><a href="{{ url_for('pricing') }}">Pricing</a></li>
+<li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+<li><a href="{{ url_for('admin') }}">Admin</a></li>
+</ul>
+</nav>
+
+    </div>
+</header>
+
+<body>
+    <!-- ================= ABOUT HERO ================= -->
+<section class="about-hero">
+    <div class="container">
+    <h1 class="about-title">ABOUT GO SAFE DRIVING SCHOOL</h1>
+        <p class="about-tagline">Training Safe & Confident Drivers Across Texas</p>
+        <p class="about-tagline-2">Your Safety. Your Confidence. Your License.</p>
+        
+        <div class="about-buttons">
+            <a href="{{ url_for('contact_page') }}" class="btn primary-btn">Book a Lesson</a>
+            <a href="{{ url_for('contact_page') }}" class="btn secondary-btn">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= OUR STORY ================= -->
+<section class="about-section">
+    <div class="container card">
+        <h2>Our Story</h2>
+        <p>
+            Go Safe Driving School was founded with one simple goal — to make our roads safer by building confident and responsible drivers.
+            What started as a passion for road safety has grown into a trusted driving school serving teens and adults across Texas.
+        </p>
+        <p>
+            With years of hands-on experience, our certified instructors are committed to helping students pass their driving test on the first attempt
+            while developing lifelong safe driving habits.
+        </p>
+    </div>
+</section>
+
+<!-- ================= MISSION & VISION ================= -->
+<section class="about-section">
+    <div class="container grid-2">
+        <div class="card">
+            <h2>Our Mission</h2>
+            <p>
+                At Go Safe Driving School, our mission is to create confident, responsible, and safety-conscious drivers
+                by providing high-quality, state-approved training.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Our Vision</h2>
+            <p>
+                We aim to reduce road accidents through better education and become the most trusted driving school in Texas.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="about-section light-bg">
+    <div class="container">
+        <h2 class="center-heading">Why Choose Go Safe</h2>
+
+        <div class="grid-3">
+            <div class="card small-card">✔ State-Certified Instructors</div>
+            <div class="card small-card">✔ Dual-Control Training Vehicles</div>
+            <div class="card small-card">✔ Flexible Scheduling</div>
+            <div class="card small-card">✔ High First-Time Pass Rate</div>
+            <div class="card small-card">✔ Pickup & Drop-Off Service</div>
+            <div class="card small-card">✔ Teen & Adult Programs</div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= OUR VALUES ================= -->
+<section class="about-section">
+    <div class="container">
+        <h2 class="center-heading">Our Core Values</h2>
+
+        <div class="grid-4">
+            <div class="card value-card">
+                <h3>🚦 Safety First</h3>
+                <p>Every lesson focuses on building safe and defensive driving habits.</p>
+            </div>
+
+            <div class="card value-card">
+                <h3>🤝 Integrity</h3>
+                <p>We maintain transparency, honesty, and professionalism in everything we do.</p>
+            </div>
+
+            <div class="card value-card">
+                <h3>🎯 Student Success</h3>
+                <p>Your success is our priority — we guide you until you’re fully confident.</p>
+            </div>
+
+            <div class="card value-card">
+                <h3>🚗 Confidence Building</h3>
+                <p>We help nervous beginners become confident and skilled drivers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="container grid-4">
+        <div class="stat-card">
+            <h2>1,200+</h2>
+            <p>Students Trained</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>95%</h2>
+            <p>Pass Rate</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>10+</h2>
+            <p>Years Experience</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>5★</h2>
+            <p>Google Rating</p>
+        </div>
+    </div>
+</section>
+</body>
+<footer>
+    <div class="container footer-content">
+        <div>
+            <h3>GO SAFE Driving School</h3>
+            <p>Instructor: Masud</p>
+            <p>📞 917-250-2764</p>
+            <p>✉ info@gosafedriving.com</p>
+            <p>📍 15901 Rolater Rd, Suite 402A<br>Frisco, TX 75035</p>
+        </div>
+    </div>
+    <p class="copyright">© 2026 GO SAFE Driving School</p>
+</footer>

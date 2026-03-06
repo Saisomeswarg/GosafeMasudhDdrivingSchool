@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Safe Driving School</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pricing.css') }}"></head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="container nav-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo (1).jpg') }}">
+            <div class="brand">
+                <h2>GO SAFE</h2>
+                <span>Driving School</span>
+            </div>
+        </div>
+
+        
+<nav>
+<ul>
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About</a></li>
+<li><a href="{{ url_for('pricing') }}">Pricing</a></li>
+<li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+<li><a href="{{ url_for('admin') }}">Admin</a></li>
+</ul>
+</nav>
+
+    </div>
+</header>
+
+<!-- ================= PRICING HERO ================= -->
+<section class="pricing-hero">
+    <div class="container">
+        <h1 class="pricing-title">Price Guide</h1>
+        <p>All services are delivered by qualified instructors.</p>
+        <p>Each package includes comprehensive driving instruction and preparation for the road test.</p>
+    </div>
+</section>
+
+<!-- ================= DRIVING PACKAGES ================= -->
+<section class="pricing-section">
+    <div class="container">
+        <h2 class="section-heading">Driving Packages (Including Road Test)</h2>
+
+        <div class="pricing-grid">
+
+            <div class="price-card">
+                <h3>2 Hours + Road Test</h3>
+                <h2>$200</h2>
+                <p><strong>Eligible For:</strong> Students who need quick road test preparation and basic review.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>4 Hours + Road Test</h3>
+                <h2>$300</h2>
+                <p><strong>Eligible For:</strong> Beginners with some driving experience needing structured guidance.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>6 Hours + Road Test</h3>
+                <h2>$400</h2>
+                <p><strong>Eligible For:</strong> New drivers preparing for their first road test attempt.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>8 Hours + Road Test</h3>
+                <h2>$500</h2>
+                <p><strong>Eligible For:</strong> Nervous beginners needing additional confidence and skill building.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>10 Hours + Road Test</h3>
+                <h2>$550</h2>
+                <p><strong>Eligible For:</strong> First-time teen drivers with minimal prior experience.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card popular">
+                <h3>12 Hours + Road Test</h3>
+                <h2>$600</h2>
+                <p><strong>Eligible For:</strong> Complete beginners who want full preparation before the driving exam.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= INDIVIDUAL LESSONS ================= -->
+<section class="pricing-section light-bg">
+    <div class="container">
+        <h2 class="section-heading">Individual Driving Lessons</h2>
+
+        <div class="pricing-grid">
+
+            <div class="price-card">
+                <h3>1 Hour Driving Lesson</h3>
+                <h2>$60</h2>
+                <p><strong>Eligible For:</strong> Students who want focused practice on specific driving skills.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>2 Hours Driving Lesson</h3>
+                <h2>$100</h2>
+                <p><strong>Eligible For:</strong> Learners needing extended hands-on driving practice.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Highway Driving Lesson</h3>
+                <h2>$100</h2>
+                <p><strong>Eligible For:</strong> Licensed drivers who want to build confidence on highways and freeways.</p>
+                <a href="{{ url_for('contact_page') }}" class="price-btn">Book Now</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-content">
+        <div>
+            <h3>GO SAFE Driving School</h3>
+            <p>Instructor: Masud</p>
+            <p>📞 917-250-2764</p>
+            <p>✉ info@gosafedriving.com</p>
+            <p>📍 15901 Rolater Rd, Suite 402A<br>Frisco, TX 75035</p>
+        </div>
+    </div>
+    <p class="copyright">© 2026 GO SAFE Driving School</p>
+</footer>

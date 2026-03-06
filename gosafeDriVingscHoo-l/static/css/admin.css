@@ -1,0 +1,194 @@
+:root{
+    --navy:#ffffff;
+    --dark:#0d7377;
+    --green:#14cc60;
+    --blue:#00a8e8;
+    --light:#f0f9ff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    background:linear-gradient(135deg, #0d7377 0%, #00a8e8 100%);
+    padding:15px 0;
+    z-index:1000;
+}
+
+.nav-container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    height:50px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+/* ADMIN CONTAINER */
+
+.admin-container{
+    max-width:1200px;
+    margin:auto;
+    margin-top:120px; /* push below fixed header */
+}
+
+/* PAGE TITLE */
+
+h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+}
+
+/* TABLE CONTAINER */
+
+.table-container{
+    overflow-x:auto;
+    background:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    border-radius:12px;
+    margin-top:20px;
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1000px;
+}
+
+thead{
+    background:#2c3e50;
+    color:white;
+}
+
+th{
+    padding:16px;
+    text-align:center;
+    font-weight:600;
+    font-size:14px;
+}
+
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+    font-size:14px;
+}
+
+/* HOVER EFFECT */
+
+tr:hover{
+    background:#f7fbff;
+}
+
+/* ACTION BUTTONS */
+
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.delete-btn{
+    background:#e74c3c;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+}
+
+.update-btn{
+    background:#3498db;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+}
+
+.delete-btn:hover{
+    background:#c0392b;
+}
+
+.update-btn:hover{
+    background:#2471a3;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+body{
+    padding:20px;
+}
+
+h1{
+    font-size:22px;
+}
+
+nav ul{
+    gap:15px;
+}
+
+}
+
+/* FOOTER (HIDDEN FOR ADMIN) */
+
+footer{
+    display:none;
+}

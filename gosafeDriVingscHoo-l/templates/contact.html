@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | GO SAFE Driving School</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="container nav-container">
+
+<div class="logo">
+<img src="{{ url_for('static', filename='logo (1).jpg') }}" width="50">
+<div class="brand">
+<h2>GO SAFE</h2>
+<span>Driving School</span>
+</div>
+</div>
+
+
+<nav>
+<ul>
+<li><a href="{{ url_for('home') }}">Home</a></li>
+<li><a href="{{ url_for('about') }}">About</a></li>
+<li><a href="{{ url_for('pricing') }}">Pricing</a></li>
+<li><a href="{{ url_for('contact_page') }}">Contact</a></li>
+<li><a href="{{ url_for('admin') }}">Admin</a></li>
+</ul>
+</nav>
+
+
+</div>
+</header>
+
+
+<!-- HERO -->
+<section class="contact-hero">
+<div class="container">
+<h1>Contact Go Safe Driving School</h1>
+<p>Book your driving lesson or request a consultation today.</p>
+</div>
+</section>
+
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+<div class="container contact-grid">
+
+
+<!-- CONTACT INFO -->
+<div class="contact-info card">
+
+<h2>Get In Touch</h2>
+
+<div class="info-box">
+<h4>📞 Call Us</h4>
+<p>917-250-2764</p>
+</div>
+
+<div class="info-box">
+<h4>📧 Email</h4>
+<p>info.gosafedriving@gmail.com</p>
+</div>
+
+<div class="info-box">
+<h4>📍 Location</h4>
+<p>15901 Rolater Rd, Suite 402A<br>Frisco, TX 75035</p>
+</div>
+
+<div class="trust-box">
+<p>✔ State Certified Instructors</p>
+<p>✔ Flexible Scheduling</p>
+<p>✔ High First-Time Pass Rate</p>
+<p>✔ Safe Dual-Control Vehicles</p>
+</div>
+
+</div>
+
+<!-- CONTACT FORM -->
+<div class="contact-form card">
+
+<h2>Book a Lesson</h2>
+
+<form id="contactForm">
+
+<input type="text" name="full_name" placeholder="Full Name" required>
+
+<input type="email" name="email" placeholder="Email Address" required>
+
+<input type="text" name="phone" placeholder="Phone Number" required>
+
+<input type="number" name="age" placeholder="Age" required>
+
+<select name="gender" required>
+<option value="">Select Gender</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Prefer Not to Say">Prefer Not to Say</option>
+</select>
+
+<select name="permit_status" required>
+<option value="">Do you have a permit?</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<select name="license_status" required>
+<option value="">Do you have a license?</option>
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+
+<select name="experience_level" required>
+<option value="">Experience Level</option>
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Experienced">Experienced</option>
+</select>
+
+<select name="class_type" required>
+<option value="">Select Class</option>
+<option value="2 Hours + Road Test - $200">2 Hours + Road Test - $200</option>
+<option value="4 Hours + Road Test - $300">4 Hours + Road Test - $300</option>
+<option value="6 Hours + Road Test - $400">6 Hours + Road Test - $400</option>
+<option value="8 Hours + Road Test - $500">8 Hours + Road Test - $500</option>
+<option value="10 Hours + Road Test - $550">10 Hours + Road Test - $550</option>
+<option value="12 Hours + Road Test - $600">12 Hours + Road Test - $600</option>
+<option value="1 Hour Lesson - $60">1 Hour Lesson - $60</option>
+<option value="2 Hours Lesson - $100">2 Hours Lesson - $100</option>
+<option value="Highway Driving Lesson - $100">Highway Driving Lesson - $100</option>
+</select>
+
+<input type="date" name="preferred_date" required>
+
+<input type="time" name="preferred_time" required>
+
+<textarea name="message" rows="4" placeholder="Additional Message"></textarea>
+
+<button type="submit" class="submit-btn">Book My Lesson</button>
+
+</form>
+
+</div>
+
+
+<!-- SUCCESS MODAL -->
+<div id="successModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close-btn">&times;</span>
+
+<h2>Booking Successful 🎉</h2>
+
+<p>Your driving lesson has been booked successfully.</p>
+
+</div>
+
+</div>
+
+<!-- MAP -->
+<section class="map-section">
+
+<div class="container">
+
+<h2 class="section-heading">Visit Our Location</h2>
+
+<div class="map-container">
+
+<iframe
+src="https://www.google.com/maps?q=15901+Rolater+Rd,+Frisco,+TX+75035&output=embed"
+width="100%"
+height="350"
+style="border:0;"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+<div class="container footer-content">
+
+<h3>GO SAFE Driving School</h3>
+
+<p>Instructor: Masud</p>
+<p>📞 917-250-2764</p>
+<p>✉ info.gosafedriving@gmail.com</p>
+<p>📍 Frisco, TX 75035</p>
+
+</div>
+
+<p class="copyright">© 2026 GO SAFE Driving School</p>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+</body>
+</html>
