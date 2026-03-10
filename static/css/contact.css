@@ -1,77 +1,111 @@
+:root{
+    --primary:#14cc60;
+    --dark-green:#0fa74c;
+    --light-green:#e8fff3;
+    --white:#ffffff;
+    --text:#333333;
+}
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#f4f7fb;
+background:#ffffff;
+color:var(--text);
 }
 
 .container{
-width:90%;
+width:92%;
 max-width:1200px;
 margin:auto;
 }
 
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
-background:#002244;
-padding:15px 0;
+backdrop-filter: blur(6px);
+position:fixed;
+width:100%;
+background:linear-gradient(to right,#ffffff 0%,#bff5d6 40%,#14cc60 100%);
+padding:14px 0;
+z-index:1000;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
 }
 
 .nav-container{
 display:flex;
 justify-content:space-between;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .logo{
 display:flex;
 align-items:center;
 gap:10px;
-color:white;
 }
+
+.logo img{
+height:55px;
+mix-blend-mode:multiply;
+}
+
+/* NAV LINKS */
 
 nav ul{
 display:flex;
 list-style:none;
-gap:25px;
+gap:28px;
+flex-wrap:wrap;
 }
 
-nav a{
+nav ul li a{
 color:white;
 text-decoration:none;
 font-weight:500;
+font-size:16px;
+transition:0.3s;
+text-shadow:0 1px 3px rgba(0,0,0,0.4);
+}
+
+nav ul li a:hover{
+color:#e8fff3;
 }
 
 nav a.active{
-border-bottom:2px solid #ffcc00;
+border-bottom:2px solid white;
 }
 
 
-/* HERO */
+/* ================= HERO ================= */
 
 .contact-hero{
-background:linear-gradient(to right,#002244,#0044aa);
-color:white;
+background:linear-gradient(135deg,#14cc60,#0fa74c);
+color:rgb(13, 1, 1);
 text-align:center;
-padding:70px 20px;
+padding:140px 20px 90px;
 }
 
 .contact-hero h1{
-font-size:36px;
+font-size:clamp(2rem,5vw,3rem);
 margin-bottom:10px;
 }
 
+.contact-hero p{
+font-size:18px;
+opacity:0.9;
+}
 
-/* CONTACT SECTION */
+
+/* ================= CONTACT SECTION ================= */
 
 .contact-section{
-padding:70px 0;
+padding:80px 20px;
 }
 
 .contact-grid{
@@ -87,7 +121,12 @@ gap:40px;
 background:white;
 padding:35px;
 border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border:2px solid var(--primary);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
 }
 
 
@@ -121,7 +160,8 @@ font-family:'Poppins';
 width:100%;
 padding:14px;
 border:none;
-background:#ffcc00;
+background:var(--primary);
+color:white;
 border-radius:30px;
 font-weight:600;
 cursor:pointer;
@@ -129,15 +169,15 @@ transition:0.3s;
 }
 
 .submit-btn:hover{
-background:#e6b800;
+background:var(--dark-green);
 }
 
 
-/* MAP */
+/* ================= MAP ================= */
 
 .map-section{
-padding:70px 0;
-background:#f2f6fb;
+padding:80px 20px;
+background:var(--light-green);
 text-align:center;
 }
 
@@ -149,18 +189,25 @@ box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
-background:#002244;
+background:var(--primary);
 color:white;
-padding:30px 0;
+padding:50px 20px;
 text-align:center;
 margin-top:50px;
 }
 
-.modal{
+footer p{
+margin:6px 0;
+color:#e8fff3;
+}
 
+
+/* ================= MODAL ================= */
+
+.modal{
 display:none;
 position:fixed;
 top:0;
@@ -170,49 +217,27 @@ height:100%;
 background:rgba(0,0,0,0.6);
 justify-content:center;
 align-items:center;
-
 }
 
 .modal-content{
-
 background:white;
 padding:40px;
 border-radius:10px;
 text-align:center;
 max-width:400px;
 width:90%;
-
 }
 
 .close-btn{
-
 position:absolute;
 top:20px;
 right:30px;
 font-size:25px;
 cursor:pointer;
-
 }
 
-.submit-btn{
 
-background:#14cc60;
-color:white;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-size:16px;
-
-}
-
-.submit-btn:hover{
-
-background:#0da94f;
-
-}
-
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:900px){
 
@@ -220,12 +245,31 @@ background:#0da94f;
 grid-template-columns:1fr;
 }
 
+.nav-container{
+flex-direction:column;
+gap:10px;
+}
+
 nav ul{
-gap:15px;
+gap:18px;
+justify-content:center;
 }
 
-.contact-hero h1{
-font-size:28px;
+.contact-hero{
+padding:130px 20px 70px;
 }
 
 }
+
+@media(max-width:480px){
+
+nav ul{
+gap:14px;
+}
+
+.card{
+padding:25px;
+}
+
+}
+

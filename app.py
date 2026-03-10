@@ -14,8 +14,6 @@ CORS(app)
 
 # ---------------- MYSQL CONNECTION ----------------
 
-# ---------------- MYSQL CONNECTION ----------------
-
 db = None
 cursor = None
 
@@ -23,7 +21,7 @@ try:
     db = mysql.connector.connect(
         host=os.environ.get("MYSQL_HOST", "localhost"),
         user=os.environ.get("MYSQL_USER", "root"),
-        password=os.environ.get("MYSQL_PASSWORD", "root"),  
+        password=os.environ.get("MYSQL_PASSWORD", "root"),
         database=os.environ.get("MYSQL_DATABASE", "gosafe_db"),
         port=int(os.environ.get("MYSQL_PORT", 3306))
     )
@@ -33,15 +31,15 @@ try:
     print("Connected to MySQL successfully")
 
 except mysql.connector.Error as err:
-
     print("MySQL connection error:", err)
+
 
 # ---------------- EMAIL FUNCTION ----------------
 
 def send_email(data):
 
     sender_email = os.environ.get("EMAIL_USER")
-    receiver_email = os.environ.get("RECEIVER_EMAIL")   
+    receiver_email = os.environ.get("RECEIVER_EMAIL")
     password = os.environ.get("EMAIL_PASSWORD")
 
     if not sender_email or not password or not receiver_email:
@@ -72,7 +70,6 @@ Message:
     msg["To"] = receiver_email
 
     try:
-
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
 
@@ -86,6 +83,7 @@ Message:
 
     except Exception as e:
         print("Email error:", e)
+
 
 # ---------------- ROUTES ----------------
 
@@ -107,27 +105,6 @@ def pricing():
 @app.route("/contact")
 def contact_page():
     return render_template("contact.html")
-
-
-# ---------------- ADMIN PANEL ----------------
-
-@app.route("/admin")
-def admin():
-
-    if cursor is None:
-        return "Database not connected"
-
-    try:
-
-        cursor.execute("SELECT * FROM bookings ORDER BY id DESC")
-        bookings = cursor.fetchall()
-
-        return render_template("admin.html", bookings=bookings)
-
-    except Exception as e:
-
-        print("Admin panel error:", e)
-        return "Error loading admin panel"
 
 
 # ---------------- SUBMIT BOOKING ----------------
@@ -172,76 +149,7 @@ def submit_booking():
         return jsonify({"message": "Success"})
 
     except Exception as e:
-
         print("Submit booking error:", e)
-        return jsonify({"message": "Error"})
-
-
-# ---------------- DELETE BOOKING ----------------
-
-@app.route("/delete/<int:booking_id>")
-def delete_booking(booking_id):
-
-    if cursor is None:
-        return jsonify({"message": "Database not connected"})
-
-    try:
-
-        cursor.execute("DELETE FROM bookings WHERE id=%s", (booking_id,))
-        db.commit()
-
-        return jsonify({"message": "Deleted"})
-
-    except Exception as e:
-
-        print("Delete booking error:", e)
-        return jsonify({"message": "Error"})
-
-
-# ---------------- UPDATE BOOKING ----------------
-
-@app.route("/update/<int:booking_id>", methods=["POST"])
-def update_booking(booking_id):
-
-    if cursor is None:
-        return jsonify({"message": "Database not connected"})
-
-    try:
-
-        data = request.json
-
-        sql = """
-        UPDATE bookings SET
-        full_name=%s,email=%s,phone=%s,age=%s,gender=%s,
-        permit_status=%s,license_status=%s,experience_level=%s,
-        class_type=%s,preferred_date=%s,preferred_time=%s,message=%s
-        WHERE id=%s
-        """
-
-        values = (
-            data.get("full_name"),
-            data.get("email"),
-            data.get("phone"),
-            data.get("age"),
-            data.get("gender"),
-            data.get("permit_status"),
-            data.get("license_status"),
-            data.get("experience_level"),
-            data.get("class_type"),
-            data.get("preferred_date"),
-            data.get("preferred_time"),
-            data.get("message"),
-            booking_id
-        )
-
-        cursor.execute(sql, values)
-        db.commit()
-
-        return jsonify({"message": "Updated"})
-
-    except Exception as e:
-
-        print("Update booking error:", e)
         return jsonify({"message": "Error"})
 
 
@@ -274,7 +182,6 @@ def export_excel():
         return send_file(file, as_attachment=True)
 
     except Exception as e:
-
         print("Export error:", e)
         return "Error exporting bookings"
 
