@@ -5,36 +5,51 @@ import openpyxl
 import smtplib
 from email.mime.text import MIMEText
 import os
+import datetime
+import logging
 from dotenv import load_dotenv
+
+# ---------------- LOAD ENV ----------------
 
 load_dotenv()
 
+# ---------------- APP CONFIG ----------------
+
 app = Flask(__name__)
 CORS(app)
+
+logging.basicConfig(level=logging.INFO)
 
 # ---------------- MYSQL CONNECTION ----------------
 
 db = None
 cursor = None
 
-try:
-    db = mysql.connector.connect(
-        host=os.environ.get("MYSQL_HOST", "localhost"),
-        user=os.environ.get("MYSQL_USER", "root"),
-        password=os.environ.get("MYSQL_PASSWORD", "root"),
-        database=os.environ.get("MYSQL_DATABASE", "gosafe_db"),
-        port=int(os.environ.get("MYSQL_PORT", 3306))
-    )
 
-    cursor = db.cursor(dictionary=True)
+def connect_db():
+    global db, cursor
 
-    print("Connected to MySQL successfully")
+    try:
+        db = mysql.connector.connect(
+            host=os.environ.get("MYSQL_HOST", "localhost"),
+            user=os.environ.get("MYSQL_USER", "root"),
+            password=os.environ.get("MYSQL_PASSWORD", "root"),
+            database=os.environ.get("MYSQL_DATABASE", "gosafe_db"),
+            port=int(os.environ.get("MYSQL_PORT", 3306))
+        )
 
-except mysql.connector.Error as err:
-    print("MySQL connection error:", err)
+        cursor = db.cursor(dictionary=True)
 
+        logging.info("Connected to MySQL successfully")
+
+    except mysql.connector.Error as err:
+        logging.error(f"MySQL connection error: {err}")
+
+
+connect_db()
 
 # ---------------- EMAIL FUNCTION ----------------
+
 
 def send_email(data):
 
@@ -43,7 +58,7 @@ def send_email(data):
     password = os.environ.get("EMAIL_PASSWORD")
 
     if not sender_email or not password or not receiver_email:
-        print("Email credentials missing")
+        logging.warning("Email credentials missing")
         return
 
     subject = "New Driving Class Booking"
@@ -70,6 +85,7 @@ Message:
     msg["To"] = receiver_email
 
     try:
+
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
 
@@ -79,13 +95,14 @@ Message:
 
         server.quit()
 
-        print("Email sent successfully")
+        logging.info("Email sent successfully")
 
     except Exception as e:
-        print("Email error:", e)
+        logging.error(f"Email error: {e}")
 
 
 # ---------------- ROUTES ----------------
+
 
 @app.route("/")
 def home():
@@ -107,17 +124,34 @@ def contact_page():
     return render_template("contact.html")
 
 
+# ---------------- HEALTH CHECK ----------------
+
+
+@app.route("/health")
+def health():
+    return {"status": "running"}
+
+
 # ---------------- SUBMIT BOOKING ----------------
+
 
 @app.route("/submit-booking", methods=["POST"])
 def submit_booking():
 
+    global db, cursor
+
     if cursor is None:
-        return jsonify({"message": "Database not connected"})
+        return jsonify({"message": "Database not connected"}), 500
+
+    if not db.is_connected():
+        connect_db()
 
     try:
 
-        data = request.json
+        data = request.get_json()
+
+        if not data:
+            return jsonify({"message": "Invalid data"}), 400
 
         sql = """
         INSERT INTO bookings
@@ -149,17 +183,23 @@ def submit_booking():
         return jsonify({"message": "Success"})
 
     except Exception as e:
-        print("Submit booking error:", e)
-        return jsonify({"message": "Error"})
+        logging.error(f"Submit booking error: {e}")
+        return jsonify({"message": "Error"}), 500
 
 
 # ---------------- EXPORT BOOKINGS ----------------
 
+
 @app.route("/export")
 def export_excel():
 
+    global db, cursor
+
     if cursor is None:
         return "Database not connected"
+
+    if not db.is_connected():
+        connect_db()
 
     try:
 
@@ -176,22 +216,35 @@ def export_excel():
             for row in data:
                 sheet.append(list(row.values()))
 
-        file = "bookings.xlsx"
-        workbook.save(file)
+        filename = f"bookings_{datetime.datetime.now().timestamp()}.xlsx"
 
-        return send_file(file, as_attachment=True)
+        workbook.save(filename)
+
+        response = send_file(filename, as_attachment=True)
+
+        @response.call_on_close
+        def cleanup():
+            try:
+                os.remove(filename)
+            except:
+                pass
+
+        return response
 
     except Exception as e:
-        print("Export error:", e)
+        logging.error(f"Export error: {e}")
         return "Error exporting bookings"
 
 
 # ---------------- RUN SERVER ----------------
 
+
 if __name__ == "__main__":
 
     from waitress import serve
 
-    print("Server starting...")
+    port = int(os.environ.get("PORT", 5000))
 
-    serve(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    logging.info(f"Server starting on port {port}...")
+
+    serve(app, host="0.0.0.0", port=port)

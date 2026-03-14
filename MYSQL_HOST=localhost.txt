@@ -1,0 +1,9 @@
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=root
+MYSQL_DATABASE=gosafe_db
+MYSQL_PORT=3306
+
+EMAIL_USER=yourgmail@gmail.com
+EMAIL_PASSWORD=your_app_password
+RECEIVER_EMAIL=info@gosafedriving.com
