@@ -1,230 +1,214 @@
 :root{
-    --primary:#14cc60;
-    --dark-green:#0fa74c;
-    --light-green:#e8fff3;
-    --white:#ffffff;
-    --text:#333333;
+--primary:#14cc60;
+--dark-green:#0fa74c;
+--light-green:#e8fff3;
+--text:#333;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins', sans-serif;
-}
-
-body{
-    background:#ffffff;
-    color:var(--text);
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 .container{
-    width:92%;
-    max-width:1200px;
-    margin:auto;
+width:92%;
+max-width:1200px;
+margin:auto;
 }
 
-/* ================= HEADER ================= */
+
+/* HEADER */
 
 header{
-    backdrop-filter: blur(6px);
-    position:fixed;
-    width:100%;
-    background:linear-gradient(to right, #ffffff 0%, #bff5d6 40%, #14cc60 100%);
-    padding:14px 0;
-    z-index:1000;
-    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+position:fixed;
+width:100%;
+background:linear-gradient(to right,#ffffff,#bff5d6,#14cc60);
+padding:14px 0;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+z-index:1000;
 }
 
 .nav-container{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
+
 
 /* LOGO */
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
 }
 
 .logo img{
-    height:55px;
-    mix-blend-mode:multiply;
+height:70px;
 }
 
-/* NAV LINKS */
+.tagline{
+font-size:12px;
+color:#333;
+margin-top:4px;
+}
 
 nav ul{
-    list-style:none;
-    display:flex;
-    gap:28px;
-    flex-wrap:wrap;
+list-style:none;
+display:flex;
+gap:28px;
 }
 
 nav ul li a{
-    color:#ffffff;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:500;
-    transition:0.3s;
-    text-shadow:0 1px 3px rgba(0,0,0,0.4);
+text-decoration:none;
+font-weight:600;
+color:#0c3b1f;
 }
 
-nav ul li a:hover{
-    color:#e8fff3;
-}
 
-/* ================= PRICING HERO ================= */
+/* HERO */
 
 .pricing-hero{
-    text-align:center;
-    padding:140px 20px 90px;
-    background:linear-gradient(135deg,#14cc60,#0fa74c);
-    color:rgb(9, 1, 1);
+padding:150px 20px 100px;
+text-align:center;
+background:linear-gradient(135deg,#14cc60,#0fa74c);
+color:rgb(11, 0, 0);
 }
 
 .pricing-title{
-    font-size:clamp(2rem,5vw,3rem);
-    border-bottom:4px solid white;
-    display:inline-block;
-    padding-bottom:10px;
-    margin-bottom:20px;
+font-size:2.8rem;
+margin-bottom:20px;
 }
 
-.pricing-subtitle{
-    font-size:18px;
-    opacity:0.9;
+
+/* PROGRAMS */
+
+.program-section{
+padding:80px 20px;
 }
 
-/* ================= PRICING SECTION ================= */
+.program-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.program-card{
+background:white;
+padding:30px;
+border-radius:12px;
+border:2px solid var(--primary);
+}
+
+.program-card h3{
+color:var(--primary);
+margin-bottom:10px;
+}
+
+
+/* PRICING */
 
 .pricing-section{
-    padding:80px 20px;
+padding:80px 20px;
 }
 
 .section-heading{
-    text-align:center;
-    margin-bottom:50px;
-    font-size:28px;
-    color:var(--primary);
+text-align:center;
+margin-bottom:40px;
+color:var(--primary);
 }
-
-.light-bg{
-    background:var(--light-green);
-}
-
-/* ================= PRICING GRID ================= */
 
 .pricing-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
 }
-
-/* ================= PRICE CARD ================= */
 
 .price-card{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-    border:2px solid var(--primary);
-    transition:0.3s;
-}
-
-.price-card:hover{
-    transform:translateY(-10px);
-    background:var(--primary);
-    color:white;
-}
-
-.price-card h3{
-    margin-bottom:10px;
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+border:2px solid var(--primary);
 }
 
 .price-card h2{
-    font-size:34px;
-    margin:15px 0;
-    color:var(--primary);
+font-size:34px;
+margin:15px 0;
+color:var(--primary);
 }
-
-.price-card:hover h2{
-    color:white;
-}
-
-.price-card p{
-    font-size:14px;
-    margin-bottom:20px;
-}
-
-/* POPULAR PLAN */
-
-.popular{
-    border:3px solid #ffcc00;
-}
-
-/* BUTTON */
 
 .price-btn{
-    display:inline-block;
-    padding:10px 22px;
-    background:white;
-    color:var(--primary);
-    border-radius:25px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s;
+display:inline-block;
+padding:10px 22px;
+background:var(--primary);
+color:white;
+border-radius:25px;
+text-decoration:none;
 }
 
-.price-btn:hover{
-    background:var(--dark-green);
-    color:white;
+.light-bg{
+background:var(--light-green);
 }
 
-/* ================= FOOTER ================= */
+
+/* FOOTER */
 
 footer{
-    background:var(--primary);
-    padding:50px 20px;
-    text-align:center;
+background:#0fa74c;
+color:rgb(1, 0, 0);
+padding:60px 20px 20px;
 }
 
-footer p{
-    margin:6px 0;
-    color:#e8fff3;
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
 }
 
-/* ================= RESPONSIVE ================= */
+.footer-col ul{
+list-style:none;
+}
 
-@media(max-width:768px){
+.footer-col ul li{
+margin-bottom:8px;
+}
+
+.footer-col ul li a{
+color:#000b05;
+text-decoration:none;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:30px;
+border-top:1px solid rgba(255,255,255,0.3);
+padding-top:15px;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.footer-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
 
 .nav-container{
-    flex-direction:column;
-    gap:10px;
+flex-direction:column;
+gap:10px;
 }
 
-nav ul{
-    justify-content:center;
-}
-
-.pricing-hero{
-    padding:130px 20px 70px;
-}
-
-}
-
-@media(max-width:480px){
-
-nav ul{
-    gap:18px;
-}
-
-.price-card{
-    padding:25px;
+.footer-grid{
+grid-template-columns:1fr;
+text-align:center;
 }
 
 }
