@@ -13,6 +13,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_USER = os.getenv("MYSQL_USER")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
+MYSQL_PORT = int(os.getenv("MYSQL_PORT", 3306))
+
+EMAIL_USER = os.getenv("EMAIL_USER")
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
+RECEIVER_EMAIL = os.getenv("info@gosafedriving.com")
+
 # ---------------- APP CONFIG ----------------
 
 app = Flask(__name__)
