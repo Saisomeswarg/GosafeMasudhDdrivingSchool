@@ -5,6 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>Contact | GO SAFE Driving School</title>
 
@@ -110,64 +111,66 @@
 
 <h2>Book a Lesson</h2>
 
-<form id="contactForm">
+<form id="contactForm" autocomplete="on">
 
-<input type="text" name="full_name" placeholder="Full Name" required>
+<input type="text" name="full_name" placeholder="Full Name"
+autocomplete="name" required>
 
-<input type="email" name="email" placeholder="Email Address" required>
+<input type="email" name="email" placeholder="Email Address"
+autocomplete="email" required>
 
-<input type="text" name="phone" placeholder="Phone Number" required>
+<input type="tel" name="phone" placeholder="Phone Number"
+autocomplete="tel" required>
 
-<input type="number" name="age" placeholder="Age" required>
+<input type="number" name="age" placeholder="Age"
+autocomplete="bday-year" required>
 
-<select name="gender" required>
+<select name="gender" autocomplete="sex" required>
 <option value="">Select Gender</option>
 <option value="Male">Male</option>
 <option value="Female">Female</option>
 <option value="Prefer Not to Say">Prefer Not to Say</option>
 </select>
 
-<select name="permit_status" required>
+<select name="permit_status" autocomplete="off" required>
 <option value="">Do you have a permit?</option>
 <option value="Yes">Yes</option>
 <option value="No">No</option>
 </select>
 
-<select name="license_status" required>
+<select name="license_status" autocomplete="off" required>
 <option value="">Do you have a license?</option>
 <option value="Yes">Yes</option>
 <option value="No">No</option>
 </select>
 
-<select name="experience_level" required>
+<select name="experience_level" autocomplete="off" required>
 <option value="">Experience Level</option>
 <option value="Beginner">Beginner</option>
 <option value="Intermediate">Intermediate</option>
 <option value="Experienced">Experienced</option>
 </select>
 
-<select name="class_type" required>
-
+<select name="class_type" autocomplete="off" required>
 <option value="">Select Class</option>
-
 <option>2 Hours + Road Test - $200</option>
 <option>4 Hours + Road Test - $300</option>
 <option>6 Hours + Road Test - $400</option>
 <option>8 Hours + Road Test - $500</option>
 <option>10 Hours + Road Test - $550</option>
 <option>12 Hours + Road Test - $600</option>
-
 <option>1 Hour Lesson - $60</option>
 <option>2 Hours Lesson - $100</option>
 <option>Highway Driving Lesson - $100</option>
-
 </select>
 
-<input type="date" name="preferred_date" required>
+<input type="date" name="preferred_date" autocomplete="off" required>
 
-<input type="time" name="preferred_time" required>
+<input type="time" name="preferred_time" autocomplete="off" required>
 
-<textarea name="message" rows="4" placeholder="Additional Message"></textarea>
+<textarea name="message" rows="4"
+placeholder="Additional Message"
+autocomplete="off"></textarea>
 
 <button type="submit" class="submit-btn">Book My Lesson</button>
 
