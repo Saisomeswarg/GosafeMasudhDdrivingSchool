@@ -170,21 +170,36 @@ def health():
 @app.route("/submit-booking", methods=["POST"])
 def submit_booking():
 
-    data = request.get_json(silent=True)
-
-    if not data:
-        return jsonify({"message": "Invalid data"}), 400
-
-    # Validation
-    for field in ["full_name", "email", "phone"]:
-        if not data.get(field):
-            return jsonify({"message": f"{field} required"}), 400
-
-    # Captcha
-    if not verify_captcha(data.get("captcha")):
-        return jsonify({"message": "Captcha failed"}), 400
-
     try:
+        data = request.get_json(silent=True)
+
+        if not data:
+            return jsonify({"message": "Invalid data"}), 400
+
+        logging.info(f"Received data: {data}")
+
+        # Validation
+        for field in ["full_name", "email", "phone"]:
+            if not data.get(field):
+                return jsonify({"message": f"{field} required"}), 400
+
+        # Captcha
+        if not verify_captcha(data.get("captcha")):
+            return jsonify({"message": "Captcha failed"}), 400
+
+        try:
+            preferred_date = datetime.datetime.strptime(
+                data.get("preferred_date"), "%Y-%m-%d"
+            ).date() if data.get("preferred_date") else None
+
+            preferred_time = datetime.datetime.strptime(
+                data.get("preferred_time"), "%H:%M"
+            ).time() if data.get("preferred_time") else None
+
+        except Exception as e:
+            logging.error(f"Date/Time error: {e}")
+            return jsonify({"message": "Invalid date/time format"}), 400
+
         conn = get_db()
         cursor = conn.cursor()
 
@@ -203,8 +218,8 @@ def submit_booking():
             data.get("license_status"),
             data.get("experience_level"),
             data.get("class_type"),
-            data.get("preferred_date"),
-            data.get("preferred_time"),
+            preferred_date,
+            preferred_time,
             data.get("message")
         ))
 
@@ -212,13 +227,16 @@ def submit_booking():
         cursor.close()
         conn.close()
 
-        send_email(data)
+        try:
+            send_email(data)
+        except:
+            pass
 
         return jsonify({"message": "Success"})
 
     except Exception as e:
-        logging.error(f"Insert error: {e}")
-        return jsonify({"message": "Server error"}), 500
+        logging.error(f"Submit error: {e}")
+        return jsonify({"message": str(e)}), 500
 
 # ---------------- EXPORT ----------------
 @app.route("/export")
