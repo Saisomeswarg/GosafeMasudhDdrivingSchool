@@ -4,3 +4,4 @@ mysql-connector-python
 openpyxl
 waitress
 python-dotenv
+requests
