@@ -87,7 +87,6 @@ form.addEventListener("submit", async function(e) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    // 🔒 Basic validation
     if (!data.full_name || !data.email || !data.phone) {
         alert("Please fill all required fields.");
         return;
@@ -108,7 +107,6 @@ form.addEventListener("submit", async function(e) {
             body: JSON.stringify(data)
         });
 
-        // 🔥 Handle non-JSON / server errors
         let result;
         try {
             result = await response.json();
@@ -135,7 +133,7 @@ form.addEventListener("submit", async function(e) {
     } catch (error) {
 
         console.error("Error:", error);
-        alert("❌ Network or server error. Please try again.");
+        alert("Network or server error. Please try again.");
 
     }
 

@@ -22,7 +22,7 @@ MYSQL_PORT = int(os.getenv("MYSQL_PORT", 3306))
 
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "info@gosafedriving.com")
+RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "drivingschoolgosafe@gmail.com")
 
 RECAPTCHA_SECRET = os.getenv("RECAPTCHA_SECRET")
 
